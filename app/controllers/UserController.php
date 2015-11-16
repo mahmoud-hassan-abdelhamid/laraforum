@@ -258,7 +258,7 @@ class UserController extends \BaseController {
 
 	public function editProfile($id)
 	{
-		if(Auth::user() && (Auth::user()->id == $id || Auth::user()->role=='admin') && $user){
+		if(User::find($id) && Auth::user() && (Auth::user()->id == $id || Auth::user()->role=='admin')){
 				
 			if (User::find($id)->email == Input::get('email')){
 				$rules = array(

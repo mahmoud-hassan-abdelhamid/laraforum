@@ -188,37 +188,45 @@ class ThreadController extends \BaseController {
 
 	public function uEdit($id)
 	{
-		 $input = array(
-		 	'title' => Input::get('thread_title'),
-		 	'content' => Input::get('thread_content'),
-		 	);
+		$thread=Thread::find($id);
 
-	    $rules = array(
-	        'title'=>'required',
-	        'content'=>'required',
-	    );
+		if(Auth::user() && ( Auth::user()->role=='admin' || $thread->user_id==Auth::user()->id)){
+
+			 $input = array(
+			 	'title' => Input::get('thread_title'),
+			 	'content' => Input::get('thread_content'),
+			 	);
+
+		    $rules = array(
+		        'title'=>'required',
+		        'content'=>'required',
+		    );
 
 
-	    $validator = Validator::make($input, $rules);
+		    $validator = Validator::make($input, $rules);
 
-	    if ($validator->fails())
-	    {
+		    if ($validator->fails())
+		    {
 
-	        $messages = $validator->messages();
+		        $messages = $validator->messages();
 
-	        return Redirect::to('uThread/$id/edit')
-	            ->withErrors($validator)
-	            ->withInput();
-	    } 
-	    else
-	    {
-	        $thread = Thread::find($id);
-	        $thread->title = Input::get('thread_title');
-	        $thread->content    = Input::get('thread_content');
-	        $thread->save();
+		        return Redirect::to('uThread/$id/edit')
+		            ->withErrors($validator)
+		            ->withInput();
+		    } 
+		    else
+		    {
+		        $thread = Thread::find($id);
+		        $thread->title = Input::get('thread_title');
+		        $thread->content    = Input::get('thread_content');
+		        $thread->save();
 
-	        return Redirect::to("thread/$thread->id/show");
-	    }
+		        return Redirect::to("thread/$thread->id/show");
+		    }
+		}
+		else{
+				return View::make('home');
+			} 
 	}
 
 
