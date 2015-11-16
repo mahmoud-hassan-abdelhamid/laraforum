@@ -1,4 +1,5 @@
 # laraforum
+
 simple forum system developed by laravel 4 framework
 
 run "php artisan migrate:refresh --seed" command to create tables and seed database
