@@ -8,7 +8,13 @@
     		<div class="col-md-3">
     			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'> {{ $thread->user->email }} </a><br><br>
     			<?php $user=$thread->user; ?>
-    			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'> <img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/$user->pic")}}'/> </a><br>
+    			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'> 
+		    				@if ($user->pic)
+		    				<img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/$user->pic")}}'/> 
+		    				@else
+		    				<img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/no.jpg")}}'/> 
+		    				@endif
+		    	</a><br>
 
     		</div>
     		<div class="col-md-9">
@@ -43,7 +49,13 @@
 		    		<div class="col-md-3">
 		    			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'> {{ $reply->user->email }} </a><br><br>
 		    			<?php $reply_user=$reply->user; ?>
-		    			<a href='{{ URL::to("user/$reply->user_id/viewProfile") }}'> <img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/$reply_user->pic")}}'/> </a><br>
+		    			<a href='{{ URL::to("user/$reply->user_id/viewProfile") }}'>
+		    				@if ($reply_user->pic)
+		    				<img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/$reply_user->pic")}}'/> 
+		    				@else
+		    				<img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/no.jpg")}}'/> 
+		    				@endif
+		    			</a><br>
 
 		    		</div>
 		    		<div class="col-md-9">
