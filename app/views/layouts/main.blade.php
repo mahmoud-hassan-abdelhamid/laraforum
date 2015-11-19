@@ -6,12 +6,8 @@
 {{ HTML::style('https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic&#038;subset=latin,latin-ext') }}
 {{ HTML::style('css/glyphicons.pro.css') }}
 {{ HTML::style('css/style.css') }}
-{{ HTML::style('css/bootstrap-markdown.css') }}
-{{ HTML::style('css/style.css') }}
 {{ HTML::script('js/jquery.js') }}
 {{ HTML::script('js/bootstrap3.min.js') }}
-{{ HTML::script('js/markdown.min.js') }}
-{{ HTML::script('js/bootstrap-markdown.js') }}
 
 </head>
 
