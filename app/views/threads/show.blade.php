@@ -8,7 +8,7 @@
     		<div class="col-md-3">
     			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'> {{ $thread->user->email }} </a><br><br>
     			<?php $user=$thread->user; ?>
-    			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'> 
+    			<a href='{{ URL::to("user/$thread->user_id/viewProfile") }}'>
 		    				@if ($user->pic)
 		    				<img class="img-responsive img-thumbnail" style="width:50% !important;" src='{{URL::asset("usersPics/$user->pic")}}'/> 
 		    				@else
